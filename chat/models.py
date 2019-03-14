@@ -16,13 +16,6 @@ class Message(models.Model):
     bot = models.BooleanField()
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
-    def create_bot(self):
-        #print('bot')
-        chatterbot = ChatBot(**settings.CHATTERBOT)
-        if(self.bot == False):
-            new_message = Message.objects.create( text = chatterbot.get_response(self.text), bot = True )
-            return new_message
     
     def __str__(self):
         return f' {self.text}, {self.bot}'
@@ -32,11 +25,3 @@ class Message(models.Model):
 
 
 
-class ChatSession(models.Model):
-    name = models.CharField(max_length=40, unique=True)
-    chat_session = models.ForeignKey(Message, on_delete=models.SET_NULL, null=True)
-
-    def create_bot(sender, instance, **kwargs):
-        instance.create_bot()
-
-    post_save.connect(create_bot, sender=Message)

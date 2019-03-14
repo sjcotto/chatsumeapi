@@ -14,7 +14,13 @@ def get_next_message(request){
     #get previous messeg from api call
     if(request.method == "GET"){
         latest_entry = Message.objects.latest('created_at')
+        #print('bot')
+        chatterbot = ChatBot(**settings.CHATTERBOT)
+        new_message = Message.objects.create( text = chatterbot.get_response(latest_entry.text), bot = True )
+            
     }
+
+    
 }
 
 def enter_message(request){
