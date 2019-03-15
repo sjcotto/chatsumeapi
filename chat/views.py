@@ -1,14 +1,16 @@
 from django.views.generic import TemplateView ,CreateView, ListView, DetailView, DeleteView, UpdateView
 from chatterbot.ext.django_chatterbot import settings
 from django.http import JsonResponse, HttpResponse
+from django.db.models.signals import post_save
+from chat.models import Message, ChatSession
 from chat.form.forms import ChatMessageForm
 from django.urls import reverse_lazy
-from django.db.models.signals import post_save
+from django.core import serializers
 from django.shortcuts import render
-from chat.models import Message, ChatSession
 from chatterbot import ChatBot
 import requests
 import json
+``
 
 def get_next_message(request)
     #get previous messeg from api call
@@ -17,8 +19,11 @@ def get_next_message(request)
         #print('bot')
         chatterbot = ChatBot(**settings.CHATTERBOT)
         new_message = Message.objects.create( text = chatterbot.get_response(latest_entry.text), bot = True )
+        return JsonResponse(serializers.serialize("JSON", new_message), safe = False)
     }
+    return HttpResponse("DONT PLAY WITH ME, PLAY WIT YO BITCH....RICH NIGGA ON SOME MULTI MILLION DOLLAR SHIT")
     #todo return JSON from new message
+    
 
     
 def enter_message(request)
@@ -27,7 +32,9 @@ def enter_message(request)
             bot = False
             text = request.POST.get("text")
         )
+        return JsonResponse(serializers.serialize("JSON", new_entry), safe = False)
     }
+    return HttpResponse("FOUND OUT YO BIG BROTHER SNITCH SO I CALL HIM YO BIG SISTER")
     #todo return if succesful POST
 
 # Create your views here.
