@@ -10,24 +10,25 @@ from chatterbot import ChatBot
 import requests
 import json
 
-def get_next_message(request){
+def get_next_message(request)
     #get previous messeg from api call
     if(request.method == "GET"){
         latest_entry = Message.objects.latest('created_at')
         #print('bot')
         chatterbot = ChatBot(**settings.CHATTERBOT)
         new_message = Message.objects.create( text = chatterbot.get_response(latest_entry.text), bot = True )
-            
     }
+    #todo return JSON fro new message
 
     
-}
-
-def enter_message(request){
+def enter_message(request)
     if(request.method == "POST"){
-        new_entry = Message.objects.latest("created_at")
+        new_entry = Message.objects.create(
+            bot = False
+            text = request.POST.get("text")
+        )
     }
-}
+    #todo return if succesful POST
 
 # Create your views here.
 class ChatSessionTemplateView(TemplateView):

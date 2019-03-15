@@ -27,5 +27,8 @@ urlpatterns = [
     path('chatume/delete/<int:pk>', views.ChatSessionDeleteView.as_view(), name = "chatume_delete"),
     path('chatume/detail/<int:pk>', views.ChatSessionDetailView.as_view(), name = "chatume_detail"),
     path('chatume/update/<int:pk>', views.ChatSessionUpdateView.as_view()),
+
+     path('chatume/get_next_message/', views.get_next_message),
+     path('chatume/enter_message/', views.enter_message),
 ]
 
