@@ -18,7 +18,7 @@ def get_next_message(request)
         chatterbot = ChatBot(**settings.CHATTERBOT)
         new_message = Message.objects.create( text = chatterbot.get_response(latest_entry.text), bot = True )
     }
-    #todo return JSON fro new message
+    #todo return JSON from new message
 
     
 def enter_message(request)
