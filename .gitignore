@@ -1,0 +1,5 @@
+chat/__pycache__/*
+chat/__pycache__/__init__.cpython-37.pyc
+chat/__pycache__/admin.cpython-37.pyc
+chat/__pycache__/models.cpython-37.pyc
+chat/__pycache__/views.cpython-37.pyc
