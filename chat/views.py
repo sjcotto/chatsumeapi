@@ -10,30 +10,28 @@ from django.shortcuts import render
 from chatterbot import ChatBot
 import requests
 import json
-``
 
-def get_next_message(request)
-    #get previous messeg from api call
-    if(request.method == "GET"){
+
+def get_next_message(request):
+    # Get previous messeg from api call
+    if(request.method == "GET"):
         latest_entry = Message.objects.latest('created_at')
-        #print('bot')
+        # print('bot')
         chatterbot = ChatBot(**settings.CHATTERBOT)
         new_message = Message.objects.create( text = chatterbot.get_response(latest_entry.text), bot = True )
         return JsonResponse(serializers.serialize("JSON", new_message), safe = False)
-    }
     return HttpResponse("DONT PLAY WITH ME, PLAY WIT YO BITCH....RICH NIGGA ON SOME MULTI MILLION DOLLAR SHIT")
-    #todo return JSON from new message
+    # Todo return JSON from new message
     
 
     
-def enter_message(request)
-    if(request.method == "POST"){
+def enter_message(request):
+    if(request.method == "POST"):
         new_entry = Message.objects.create(
-            bot = False
+            bot = False,
             text = request.POST.get("text")
         )
         return JsonResponse(serializers.serialize("JSON", new_entry), safe = False)
-    }
     return HttpResponse("FOUND OUT YO BIG BROTHER SNITCH SO I CALL HIM YO BIG SISTER")
     #todo return if succesful POST
 
