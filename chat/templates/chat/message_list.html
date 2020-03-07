@@ -1,13 +1,13 @@
+{% extends 'header.html' %}
 {% load static %}
 
-{% extends 'header.html' %}
 {% block content %}
         <div class = "row">
             <div class = "col s6">
                 <h1>Chatume</h1>
-                <p>
-                   Chat bot bot implementation will genrate text from another chatbot messeges
-                </p>
+                    <p>
+                    Chat bot implementation will genrate text from another chatbot messeges
+                    </p>
             </div>
             <div class = "col s6">
                 {% for object in object_list %}
@@ -24,7 +24,7 @@
                                         <li><a>{{ object.text }}</a></li>
                                     </div>
                                     <div>
-                                        <a class="waves-effect waves-light btn blue lighten-2" href="/chatume/delete/{{object.pk}}">Delete Me! <i class="fas fa-dumpster-fire"></i></a>
+                                        <a class="waves-effect waves-light btn blue lighten-2" href="/chatume/delete/{{object.pk}}">Delete Me!</a>
                                     </div>
                                 </p>
                             </span>
@@ -36,69 +36,4 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">CHAT</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="disabled"><a href="#!"><i class="material-icons">TUME</i></a></li>
-  </ul>
 {% endblock %}

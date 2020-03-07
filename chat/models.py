@@ -11,14 +11,14 @@ from chatterbot import ChatBot
 
 #model handles name of chat session
 class ChatSession(models.Model):
-    title = models.TextField()
+    title = models.TextField(null=True)
 
 #model handles messege information
 class Message(models.Model):
     bot = models.BooleanField()
-    text = models.TextField()
+    text = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    chat_session = models.ForeignKey(ChatSession, on_delete=models.CASCADE)
+    chat_session = models.ForeignKey(ChatSession, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return f' {self.text}, {self.bot}'
