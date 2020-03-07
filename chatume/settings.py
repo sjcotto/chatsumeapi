@@ -33,16 +33,25 @@ INSTALLED_APPS = [
 # ChatterBot settings
 CHATTERBOT = {
     'name': 'Nala',
-    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
-    'training_data': [
-        'chatterbot.corpus.english'
+    'logic_adapters': [
+        {
+            'import_path': 'chatterbot.logic.BestMatch',
+            'default_response': 'I am sorry, but I do not understand.',
+            'maximum_similarity_threshold': 0.1
+        },
+        {
+            'import_path': 'chatterbot.logic.MathematicalEvaluation',
+        },
     ],
-    'django_app_name': 'django_chatterbot',
-    'logic_adapters':[
-        "chatterbot.logic.MathematicalEvaluation",
-        "chatterbot.logic.TimeLogicAdapter",
-        "chatterbot.logic.BestMatch",
-
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'storage_adapter': 'chatterbot.storage.DjangoStorageAdapter',
+    'training_data': [
+        "chatterbot.corpus.english",
+        "chatterbot.corpus.spanish",
+        "chatterbot.corpus.italian",
+        "chatterbot.corpus.french",
+        "chatterbot.corpus.russian"
+        
     ]
 }
 
