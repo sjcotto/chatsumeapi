@@ -16,6 +16,8 @@ Django = "*"
 ChatterBot = "*"
 requests = "*"
 update = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"
