@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'chatterbot.ext.django_chatterbot',
     'django_extensions',
     'chat',
-    'gpt_chat',
 ]
 
 # ChatterBot settings
