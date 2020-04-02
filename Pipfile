@@ -19,6 +19,7 @@ ChatterBot = "*"
 gpt-2-simple = "*"
 requests = "*"
 tensorflow = "==1.15"
+update = "*"
 
 [requires]
 python_version = "3.7"
