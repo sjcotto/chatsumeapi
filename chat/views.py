@@ -4,12 +4,11 @@ from django.views.generic import View
 from django.http import JsonResponse
 from chatterbot import ChatBot
 from chatterbot.ext.django_chatterbot import settings
-from django.views.decorators.csrf import csrf_exempt
 
 class ChatterBotAppView(TemplateView):
     template_name = 'app.html'
 
-# @csrf_exempt 
+
 class ChatterBotApiView(View):
     """
     Provide an API endpoint to interact with ChatterBot.
