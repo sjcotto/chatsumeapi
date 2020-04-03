@@ -17,16 +17,10 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
-# This is new:
-
-
-# load_dotenv(find_dotenv())
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
