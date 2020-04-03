@@ -1,5 +1,5 @@
 {% load static %}
-
+{% csrf_token %}
 
 <!doctype html>
 <html>
@@ -46,7 +46,7 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script>
       var chatterbotUrl = '{% url "chatume" %}';
-      var csrftoken = Cookies.get('csrftoken');
+      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
       function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
@@ -84,8 +84,7 @@
           type: 'POST',
           url: chatterbotUrl,
           data: JSON.stringify(inputData),
-          contentType: 'application/json',
-          credentials: 'include'
+          contentType: 'application/json'
         });
 
         $submit.done(function(statement) {
