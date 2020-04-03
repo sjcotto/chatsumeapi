@@ -18,6 +18,7 @@ requests = "*"
 update = "*"
 gunicorn = "*"
 django-heroku = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
