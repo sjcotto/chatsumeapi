@@ -19,7 +19,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://chatume.herokuapp.com/', 'localhost:8000/']
+ALLOWED_HOSTS = ['https://chatume.herokuapp.com/', 'localhost:8000/', 'http://127.0.0.1:8000/']
 
 
 INSTALLED_APPS = [
