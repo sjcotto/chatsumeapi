@@ -84,7 +84,8 @@
           type: 'POST',
           url: chatterbotUrl,
           data: JSON.stringify(inputData),
-          contentType: 'application/json'
+          contentType: 'application/json',
+          credentials: 'include'
         });
 
         $submit.done(function(statement) {

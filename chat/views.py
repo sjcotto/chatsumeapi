@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 class ChatterBotAppView(TemplateView):
     template_name = 'app.html'
 
-@csrf_exempt 
+# @csrf_exempt 
 class ChatterBotApiView(View):
     """
     Provide an API endpoint to interact with ChatterBot.
