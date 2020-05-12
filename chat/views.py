@@ -24,7 +24,7 @@ def chatterbot_api(request):
         Return data corresponding to the current conversation.
         """
         return JsonResponse({
-            'name': "chatterbot.name"
+            'name': chatterbot.name
         })
     
     if request.method == 'POST':
@@ -48,8 +48,9 @@ def chatterbot_api(request):
         # # print(input_data['text'], response)
 
         # response_data = response.serialize()
+        print(request)
 
-        return JsonResponse("response_data", safe=True,status=200)
+        return JsonResponse("response_data", safe=False,status=200)
         
         
 

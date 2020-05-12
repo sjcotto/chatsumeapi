@@ -37,7 +37,7 @@ INSTALLED_APPS = [
 
 # ChatterBot settings
 CHATTERBOT = {
-    'name': 'Nala',
+    'name': 'chatsume',
     'logic_adapters': [
         {
             'import_path': 'chatterbot.logic.BestMatch',
@@ -60,9 +60,11 @@ CHATTERBOT = {
     ]
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

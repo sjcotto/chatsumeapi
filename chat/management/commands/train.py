@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from chatume.settings import CHATTERBOT
+
 
 class Command(BaseCommand):
     """
@@ -15,11 +15,11 @@ class Command(BaseCommand):
         from chatterbot.ext.django_chatterbot import settings
         from chatterbot.trainers import ChatterBotCorpusTrainer
 
-        chatterbot = ChatBot(CHATTERBOT)
+        chatterbot = ChatBot(**settings.CHATTERBOT)
 
-        # trainer = ChatterBotCorpusTrainer(chatterbot)
+        trainer = ChatterBotCorpusTrainer(chatterbot)
 
-        # trainer.train(settings.CHATTERBOT['training_data'])
+        trainer.train(*settings.CHATTERBOT['training_data'])
 
         # Django 1.8 does not define SUCCESS
         if hasattr(self.style, 'SUCCESS'):
@@ -28,5 +28,5 @@ class Command(BaseCommand):
             style = self.style.NOTICE
 
         self.stdout.write(style('Starting training...'))
-        # training_class = trainer.__class__.__name__
-        # self.stdout.write(style('ChatterBot trained using "%s"' % training_class))
+        training_class = trainer.__class__.__name__
+        self.stdout.write(style('ChatterBot trained using "%s"' % training_class))
