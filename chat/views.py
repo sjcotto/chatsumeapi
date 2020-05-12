@@ -4,45 +4,56 @@ from django.views.generic import View
 from django.http import JsonResponse
 from chatterbot import ChatBot
 from chatterbot.ext.django_chatterbot import settings
+from rest_framework import generics
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 class ChatterBotAppView(TemplateView):
     template_name = 'app.html'
 
-
-class ChatterBotApiView(View):
+@csrf_exempt
+def chatterbot_api(request):
     """
     Provide an API endpoint to interact with ChatterBot.
     """
 
     chatterbot = ChatBot(**settings.CHATTERBOT)
-
-    def post(self, request, *args, **kwargs):
-        """
-        Return a response to the statement in the posted data.
-        * The JSON data should contain a 'text' attribute.
-        """
-        input_data = json.loads(request.body.decode('utf-8'))
-
-        if 'text' not in input_data:
-            return JsonResponse({
-                'text': [
-                    'The attribute "text" is required.'
-                ]
-            }, status=400)
-
-        response = self.chatterbot.get_response(input_data)
-
-        response_data = response.serialize()
-
-        return JsonResponse(response_data, status=200)
-
-    def get(self, request, *args, **kwargs):
+    if request.method == 'GET':
         """
         Return data corresponding to the current conversation.
         """
         return JsonResponse({
-            'name': self.chatterbot.name
+            'name': "chatterbot.name"
         })
+    
+    if request.method == 'POST':
+        """
+        Post text to chatbot
+        * The JSON data should contain a 'text' attribute.
+        """
+        # this is info to a user
+        # input_data = json.loads(request.body.decode('utf-8'))
+
+        # if 'text' not in input_data:
+        #     return JsonResponse({
+        #         'text': [
+        #             'The attribute "text" is required.'
+        #         ]
+        #     }, status=400)
+
+        # # this is the reponse from the chatbot
+        # response = chatterbot.get_response(input_data)
+        
+        # # print(input_data['text'], response)
+
+        # response_data = response.serialize()
+
+        return JsonResponse("response_data", safe=True,status=200)
+        
+        
+
+
 
 # # Create your views here.
 # class ChatSessionTemplateView(TemplateView):

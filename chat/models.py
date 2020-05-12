@@ -7,24 +7,33 @@ import json
 from chatterbot.ext.django_chatterbot import settings
 from chatterbot import ChatBot
 
-# Create your models here.
 
-#model handles name of chat session
+# when you meet with your teamate, morning afternoon, evening, night, needs no meet selsction.
+
+# Create your models here.
+"""
+Conversation model:
+Tracks text between agents.
+conversation can be: 
+    bot - bot
+    bot - user
+    user - user
+
+MVP will be user send, bot response
+I will use django rest framework to communicate over api
+i could just use a flask app.
+saving text allows me to train in the future models, 
+but my model will rely on pretrained vectors, or yml
+so saving data may be trash. 
+
+it could be to perform analysis on responses and text submission
+i mean i want to send data from django to react app. 
+"""
+
 class ChatSession(models.Model):
     title = models.TextField(null=True)
 
 #model handles messege information
 class Message(models.Model):
-    bot = models.BooleanField()
+    send_to = models.CharField(default="", max_length=25)
     text = models.TextField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    chat_session = models.ForeignKey(ChatSession, on_delete=models.CASCADE, null=True)
-    
-    def __str__(self):
-        return f' {self.text}, {self.bot}'
-
-    def get_absolute_url(self):
-        return reverse_lazy("chatume_detail", args=[str(self.id)])
-
-
-

@@ -4,21 +4,22 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+jupyterlab = "*"
+ipywidgets = "*"
 
 [packages]
 chatterbot-corpus = {git = "https://github.com/gunthercox/chatterbot-corpus.git"}
 djangorestframework = "*"
 django-filter = "*"
 django-extensions = "*"
-jupyterlab = "*"
-ipywidgets = "*"
 Django = "*"
-ChatterBot = "*"
 requests = "*"
 update = "*"
 gunicorn = "*"
 django-heroku = "*"
 python-dotenv = "*"
+django-cors-headers = "*"
+chatterbot = "*"
 
 [requires]
 python_version = "3.7"
