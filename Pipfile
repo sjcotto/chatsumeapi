@@ -20,6 +20,6 @@ django-heroku = "*"
 python-dotenv = "*"
 django-cors-headers = "*"
 chatterbot = "*"
-
+spacy="*"
 [requires]
 python_version = "3.7"
