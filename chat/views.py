@@ -33,24 +33,28 @@ def chatterbot_api(request):
         * The JSON data should contain a 'text' attribute.
         """
         # this is info to a user
+        # print(request.body.decode('utf-8'))
         # input_data = json.loads(request.body.decode('utf-8'))
+        # print(input_data["mssg"])
 
-        # if 'text' not in input_data:
-        #     return JsonResponse({
-        #         'text': [
-        #             'The attribute "text" is required.'
-        #         ]
-        #     }, status=400)
+        try:
+            input_data = json.loads(request.body.decode('utf-8'))
+            print(input_data['mssg'])
+            if 'mssg' not in input_data:
+                return JsonResponse(
+                        'The attribute "text" is required.'
+                    
+                , status=400)
 
-        # # this is the reponse from the chatbot
-        # response = chatterbot.get_response(input_data)
-        
-        # # print(input_data['text'], response)
+            # this is the reponse from the chatbot
+            response = chatterbot.get_response(input_data["mssg"])
 
-        # response_data = response.serialize()
-        print(request)
+            response_data = response.serialize()
+        except:
+            raise
 
-        return JsonResponse("response_data", safe=False,status=200)
+
+        return JsonResponse(response_data, safe=False,status=200)
         
         
 
