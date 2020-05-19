@@ -19,6 +19,7 @@ gunicorn = "*"
 django-heroku = "*"
 python-dotenv = "*"
 django-cors-headers = "*"
-chatterbot = "*"
+chatterbot = {path = "./ChatterBot"}
+
 [requires]
 python_version = "3.7"
