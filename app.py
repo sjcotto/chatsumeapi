@@ -3,9 +3,9 @@ from flask_cors import CORS, cross_origin
 from train import bot
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/", methods = ['POST'])
-@cross_origin()
 def get_bot_response():    
     data = request.get_json(force = True)  
     response = bot.get_response(data["mssg"])
