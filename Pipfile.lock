@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "df10dc2a452d8fb25e59eb2e16b1949a79ace1beb2a41e0ae0c01f4be86085f7"
+            "sha256": "8f967993c3fed8204b0d9d8167516f1fcf8f0acc3e5d1c108e0c285551e355a2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,7 +32,7 @@
         },
         "chatterbot": {
             "git": "git://github.com/qweliant/ChatterBot.git",
-            "ref": "cc80a59781d10b020e16b87b40a98a6ae029932a"
+            "ref": "68c54907a9f79f5059c145aeea6aad9a7f2bd190"
         },
         "chatterbot-corpus": {
             "git": "https://github.com/gunthercox/chatterbot-corpus.git",
@@ -44,6 +44,9 @@
                 "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
             ],
             "version": "==7.1.2"
+        },
+        "en-core-web-sm": {
+            "file": "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz"
         },
         "flask": {
             "hashes": [
@@ -186,7 +189,7 @@
                 "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
                 "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
             ],
-            "markers": "sys_platform == 'darwin'",
+            "markers": "platform_system == 'Darwin'",
             "version": "==0.1.0"
         },
         "attrs": {
