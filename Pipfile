@@ -9,18 +9,13 @@ ipywidgets = "*"
 
 [packages]
 chatterbot-corpus = {git = "https://github.com/gunthercox/chatterbot-corpus.git"}
-djangorestframework = "*"
-django-filter = "*"
-django-extensions = "*"
-Django = "*"
 requests = "*"
 update = "*"
 gunicorn = "*"
-django-heroku = "*"
 python-dotenv = "*"
-django-cors-headers = "*"
-chatterbot = {path = "./ChatterBot"}
 flask = "*"
+flask-cors = "*"
+chatterbot = {git = "git://github.com/qweliant/ChatterBot.git",ref = "master"}
 
 [requires]
 python_version = "3.7"

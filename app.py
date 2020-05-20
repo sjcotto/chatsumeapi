@@ -1,20 +1,19 @@
-from flask import Flask, render_template, request
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS, cross_origin
+from train import bot
 
 app = Flask(__name__)
 
 
-bot = ChatBot("Candice")
-bot.set_trainer(ListTrainer)
-bot.set_trainer(ChatterBotCorpusTrainer)
-bot.train("chatterbot.corpus.english")
 
 
-@app.route("/get")
+@app.route("/", methods = ['POST'])
+@cross_origin()
 def get_bot_response():    
-    userText = request.args.get('msg')    
-    return "str(bot.get_response(userText)) "
+    data = request.get_json(force = True)  
+    response = bot.get_response(data["mssg"])
+    # print(response)
+    return jsonify(results = str(response))
 
 if __name__ == "__main__":    
     app.run()
