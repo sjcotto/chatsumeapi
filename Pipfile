@@ -15,7 +15,7 @@ gunicorn = "*"
 python-dotenv = "*"
 flask = "*"
 flask-cors = "*"
-chatterbot = {git = "git://github.com/qweliant/ChatterBot.git",ref = "master"}
+chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
 spacy = "==2.2.1"
 
 [requires]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b465b11eb8e681e3ae968d44bc567162885bc1ee01848c4744261ce472ae1af3"
+            "sha256": "77bdfa414c41ee555f44bb2265c0e372c61ad521763fad10e41f39e6c1dbf51b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -53,7 +53,7 @@
         },
         "chatterbot": {
             "git": "git://github.com/qweliant/ChatterBot.git",
-            "ref": "68c54907a9f79f5059c145aeea6aad9a7f2bd190"
+            "ref": "ce50ad4b6a971ec8355a54813216105a5717f6d6"
         },
         "chatterbot-corpus": {
             "git": "https://github.com/gunthercox/chatterbot-corpus.git",
