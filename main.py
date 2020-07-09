@@ -22,7 +22,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["POST"],
     allow_headers=["*"],
 )
 
@@ -33,18 +33,25 @@ async def chat_chatterbot(message: Message):
     message.output  = str(bot.get_response(message.input))
     return {"output" : message.output}
 
-@app.post("/sentiment")
-async def sentiment_analysis():
-    return {"sentiment" : "SENTANALYSIS"}
+@app.post("/sentiment/")
+async def sentiment_analysis(message: Message):
+    message.output  = str(nlp.sentiments(message.input))
+
+    return {"output" : message.output}
 
 @app.post("/ner/")
-async def  named_entity_recognition():
-    return {"ner": "NER"}
+async def  named_entity_recognition(message: Message):
+    # message.output  = nlp.ner(message.input)
+    print("NER", nlp.ner(message.input))
+    return {"output" : nlp.ner(message.input)}
 
 @app.post("/generate/")
-async def  generate():
-    return {"generate": "generate"}
+async def  generate(message: Message):
+    message.output  = str(nlp.generate)
+
+    return {"output" : message.output}
 
 @app.post("/chat_dialo/")
-async def  chat_dialo():
-    return {"chat_dialo": "chat_dialo"}
+async def  chat_dialo(message: Message):
+    message.output  = str(nlp.chat_bot(message.input))
+    return {"output" : message.output}
