@@ -4,8 +4,9 @@ from train import bot
 from pydantic import BaseModel
 
 
-class Item(BaseModel):
-    mssg: str
+class Message(BaseModel):
+    input: str
+    output: str = None
 
 app = FastAPI()
 
@@ -26,11 +27,9 @@ app.add_middleware(
 
 
 @app.post("/chat/")
-async def bot_mssg(item: Item):
-    print(item.mssg)
-    # response = bot.get_response(msg)
-    # print("Res", response)
-    return item.mssg
+async def bot_mssg(message: Message):
+    message.output  = str(bot.get_response(message.input))
+    return {"output" : message.output}
 
 @app.get("/ner/")
 async def  named_entity_recognition():
