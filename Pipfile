@@ -6,20 +6,16 @@ verify_ssl = true
 [dev-packages]
 jupyterlab = "*"
 ipywidgets = "*"
+pylint = "*"
 
 [packages]
-chatterbot-corpus = {git = "https://github.com/gunthercox/chatterbot-corpus.git"}
 requests = "*"
 update = "*"
 gunicorn = "*"
-flask = "*"
-flask-cors = "*"
-chatterbot = "*"
-en-core-web-sm = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz"}
-de-core-news-sm = {file = "https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.1.0/de_core_news_sm-2.1.0.tar.gz"}
-transformers = "*"
-fastapi = "*"
 uvicorn = "*"
+fastapi = "*"
+chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
+chatterbot-corpus = {git = "https://github.com/gunthercox/chatterbot-corpus.git"}
 
 [requires]
-python_version = "3"
+python_version = "3.7"
