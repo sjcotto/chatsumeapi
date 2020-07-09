@@ -1,56 +1,54 @@
 from transformers import (
     GPT2LMHeadModel,
     GPT2Tokenizer,
-    pipeline
+    pipeline,
+    AutoModelWithLMHead,
+    AutoTokenizer
 )
-
+import torch
 import re
 
-zera_yacob  = "One day I said to my self in my own thought ‘whom am I praying to or is  there  a  God  who  listens  to  me?’  At  this  thought  I  was  invaded  by  dead full sadness"
 
 class NLP:
     def __init__(self):
         
-        self.model = GPT2LMHeadModel.from_pretrained("./models/")
-        self.tokenizer = GPT2Tokenizer.from_pretrained("./models/")  # Add specific options if needed
+        self.gen_model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.gen_tokenizer = GPT2Tokenizer.from_pretrained('gpt2')  # Add specific options if needed
         self.generated = None
+        self.chat_tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
+        self.chat_model = AutoModelWithLMHead.from_pretrained("microsoft/DialoGPT-medium")
 
-    def generate(self, TRAIN_TEXT):
-        summarizer = pipeline("summarization")
 
-        # OpenAI GPT-2
-        tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-        model = GPT2LMHeadModel.from_pretrained('gpt2')
-
-        prompt = summarizer(TRAIN_TEXT, max_length=250, min_length=30)[0]['summary_text']
-
-        inputs = tokenizer.encode(
-            TRAIN_TEXT + prompt, add_special_tokens=False, return_tensors="pt"
-        )
-
-        prompt_length = len(
-            tokenizer.decode(
-                inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True
-            )
-        )
-        outputs = model.generate(
-            inputs, max_length=250, do_sample=True, top_p=0.65, top_k=40
-        )
-        generated = prompt + tokenizer.decode(outputs[0])[prompt_length:]
-        self.generated = str(prompt + self.tokenizer.decode(outputs[0])[prompt_length:])
-        self.generated = re.sub("[^A-Za-z0-9 ]+", "", self.generated)
-        return self.generated
-
-    def summarize(self, text=zera_yacob):
-
-        if self.generated is None:
-            summarizer = pipeline("summarization")
-            v = summarizer(text, max_length=80, min_length=30)[0]["summary_text"]
-            return v
+    def generate(self, PADDING_TEXT="BURN IT DOWN", prompt="I do no not see why"):
         
-        summarizer = pipeline("summarization")
-        v = summarizer(self.generated, max_length=80, min_length=30)[0]["summary_text"]
-        return v
+        inputs = self.gen_tokenizer.encode(PADDING_TEXT + prompt, add_special_tokens=False, return_tensors="pt")
+        prompt_length = len(self.gen_tokenizer.decode(inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True))
+        outputs = self.gen_model .generate(inputs, max_length=250, do_sample=True, top_p=0.95, top_k=60)
+        generated = prompt + self.gen_tokenizer.decode(outputs[0])[prompt_length:]
 
-    def save_model(self):
-        pass
+    def ner(self, sentence):
+
+        nlp = pipeline("ner")
+        return nlp(sentence)
+
+    def chat_bot(self):
+        tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
+        model = AutoModelWithLMHead.from_pretrained("microsoft/DialoGPT-medium")
+        # Let's chat for 5 lines
+        for step in range(5):
+            # encode the new user input, add the eos_token and return a tensor in Pytorch
+            new_user_input_ids = tokenizer.encode(input(">> User:") + tokenizer.eos_token, return_tensors='pt')
+
+            # append the new user input tokens to the chat history
+            bot_input_ids = torch.cat([chat_history_ids, new_user_input_ids], dim=-1) if step > 0 else new_user_input_ids
+
+            # generated a response while limiting the total chat history to 1000 tokens, 
+            chat_history_ids = model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
+
+            # pretty print last ouput tokens from bot
+            print("DialoGPT: {}".format(tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)))
+
+    def sentiments(self):
+        return "SA"
+
+    

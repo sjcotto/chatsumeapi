@@ -29,10 +29,22 @@ app.add_middleware(
 
 
 @app.post("/chat/")
-async def bot_mssg(message: Message):
+async def chat_chatterbot(message: Message):
     message.output  = str(bot.get_response(message.input))
     return {"output" : message.output}
 
-@app.get("/ner/")
+@app.post("/sentiment")
+async def sentiment_analysis():
+    return {"sentiment" : "SENTANALYSIS"}
+
+@app.post("/ner/")
 async def  named_entity_recognition():
     return {"ner": "NER"}
+
+@app.post("/generate/")
+async def  generate():
+    return {"generate": "generate"}
+
+@app.post("/chat_dialo/")
+async def  chat_dialo():
+    return {"chat_dialo": "chat_dialo"}
