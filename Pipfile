@@ -14,9 +14,12 @@ update = "*"
 gunicorn = "*"
 flask = "*"
 flask-cors = "*"
-chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
+chatterbot = "*"
 en-core-web-sm = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz"}
 de-core-news-sm = {file = "https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.1.0/de_core_news_sm-2.1.0.tar.gz"}
+transformers = "*"
+fastapi = "*"
+uvicorn = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3"
