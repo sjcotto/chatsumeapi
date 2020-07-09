@@ -2,18 +2,20 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from train import bot
 from pydantic import BaseModel
-
+from nlp import NLP
 
 class Message(BaseModel):
     input: str
     output: str = None
 
 app = FastAPI()
+nlp = NLP()
 
 origins = [
-
+    "https://www.metavisuo.com/nlp",
+    "https://www.metavisuo.com",
     "http://localhost",
-    "http://localhost:3000",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(

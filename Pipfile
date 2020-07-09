@@ -17,6 +17,8 @@ fastapi = "*"
 chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
 chatterbot-corpus = {git = "https://github.com/gunthercox/chatterbot-corpus.git"}
 pydantic = "*"
+transformers = "*"
+torch = "*"
 
 [requires]
 python_version = "3.7"
