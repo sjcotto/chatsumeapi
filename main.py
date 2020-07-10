@@ -26,8 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-
 @app.post("/chat/")
 async def chat_chatterbot(message: Message):
     message.output  = str(bot.get_response(message.input))
