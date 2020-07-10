@@ -41,8 +41,10 @@ async def sentiment_analysis(message: Message):
 
 @app.post("/ner/")
 async def  named_entity_recognition(message: Message):
-    # message.output  = nlp.ner(message.input)
+    if not message.input:
+        return
     print("NER", nlp.ner(message.input))
+
     return {"output" : nlp.ner(message.input)}
 
 @app.post("/generate/")
