@@ -8,5 +8,4 @@ ENV WEB_CONCURRENCY 2
 COPY ./requirements/requirements.txt ./requirements/requirements.txt
 RUN pip install -r requirements/requirements.txt
 
-COPY .env /app/.env
 COPY ./app /app/app 
