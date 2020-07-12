@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: chatsumeapi 
+  name: qweliantchatsumeapi 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: chatsumeapi 
+        app: qweliantchatsumeapi 
     spec:
       containers:
-        - name: chatsumeapi 
-          image: chatsumeapicontainerregistry.azurecr.io/chatsumeapi
+        - name: qweliantchatsumeapi 
+          image: chatsumeapicontainerregistry.azurecr.io/qweliantchatsumeapi
           ports:
-          - containerPort: 10.0.0.10
+          - containerPort: 80
