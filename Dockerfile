@@ -6,9 +6,8 @@ ENV WEB_CONCURRENCY 2
 
 # Install spacy requirments separately first so that Docker will 
 # cache the (somewhat) expensive download of a spacy model
-COPY ./requirements/spacy.txt ./requirements/spacy.txt
-RUN pip install -r requirements/spacy.txt
-RUN spacy download {{cookiecutter.project_language}}
+COPY ./requirements/requirements.txt ./requirements/requirements.txt
+RUN pip install -r requirements/requirements.txt
 
 COPY ./requirements/base.txt ./requirements/base.txt
 RUN pip install -r requirements/base.txt
