@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: chatsumeapi 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: chatsumeapi 
+    spec:
+      containers:
+        - name: chatsumeapi 
+          image: chatsumeapicontainerregistry.azurecr.io/chatsumeapi
+          ports:
+          - containerPort: 10.0.0.10
