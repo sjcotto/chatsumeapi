@@ -1,2 +1,2 @@
 # chatsumeapi
-### FastAPI + Huggingface to create chat dialogs, 
+### FastAPI + Huggingface to perform NLP task. 
