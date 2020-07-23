@@ -22,22 +22,22 @@ class NLP:
         
         inputs = self.gen_tokenizer.encode(PADDING_TEXT + prompt, add_special_tokens=False, return_tensors="pt")
         prompt_length = len(self.gen_tokenizer.decode(inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True))
-        outputs = self.gen_model .generate(inputs, max_length=50, do_sample=True, top_p=0.95, top_k=60)
+        outputs = self.gen_model .generate(inputs, max_length=200, do_sample=True, top_p=0.95, top_k=60)
         generated = prompt + self.gen_tokenizer.decode(outputs[0])[prompt_length:]
         return str(generated)
 
     def ner(self, text: str):
 
         label_list = [
-            "O",       # Outside of a named entity
-            "B-MISC",  # Beginning of a miscellaneous entity right after another miscellaneous entity
-            "I-MISC",  # Miscellaneous entity
-            "B-PER",   # Beginning of a person's name right after another person's name
-            "I-PER",   # Person's name
-            "B-ORG",   # Beginning of an organisation right after another organisation
-            "I-ORG",   # Organisation
-            "B-LOC",   # Beginning of a location right after another location
-            "I-LOC"    # Location
+            " O ",       # Outside of a named entity
+            " B-MISC ",  # Beginning of a miscellaneous entity right after another miscellaneous entity
+            " I-MISC ",  # Miscellaneous entity
+            " B-PER ",   # Beginning of a person's name right after another person's name
+            " I-PER ",   # Person's name
+            " B-ORG ",   # Beginning of an organisation right after another organisation
+            " I-ORG ",   # Organisation
+            " B-LOC ",   # Beginning of a location right after another location
+            " I-LOC "    # Location
         ]
         # Bit of a hack to get the tokens with the special tokens
         tokens = self.ner_tokenizer.tokenize(self.ner_tokenizer.decode(self.ner_tokenizer.encode(text)))
@@ -49,7 +49,7 @@ class NLP:
 
         for v in pred:
             for i, j in enumerate(pred):
-                if j[1] is "O":
+                if j[1] is " O ":
                     del pred[i]      
         return pred
 
