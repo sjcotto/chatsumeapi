@@ -22,7 +22,7 @@ class NLP:
         
         inputs = self.gen_tokenizer.encode(PADDING_TEXT + prompt, add_special_tokens=False, return_tensors="pt")
         prompt_length = len(self.gen_tokenizer.decode(inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True))
-        outputs = self.gen_model .generate(inputs, max_length=250, do_sample=True, top_p=0.95, top_k=60)
+        outputs = self.gen_model .generate(inputs, max_length=50, do_sample=True, top_p=0.95, top_k=60)
         generated = prompt + self.gen_tokenizer.decode(outputs[0])[prompt_length:]
         return str(generated)
 
