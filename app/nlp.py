@@ -18,7 +18,7 @@ class NLP:
         self.ner_model = AutoModelForTokenClassification.from_pretrained("dbmdz/bert-large-cased-finetuned-conll03-english")
         self.ner_tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
     
-    def generate(self, PADDING_TEXT="BURN IT DOWN", prompt="I do no not see why"):
+    def generate(self, PADDING_TEXT="...", prompt="The epistemelogical limit"):
         
         inputs = self.gen_tokenizer.encode(PADDING_TEXT + prompt, add_special_tokens=False, return_tensors="pt")
         prompt_length = len(self.gen_tokenizer.decode(inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True))

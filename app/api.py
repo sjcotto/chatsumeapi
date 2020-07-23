@@ -45,7 +45,7 @@ async def  named_entity_recognition(message: Message):
 
 @app.post("/generative/")
 async def  generate(message: Message):
-    message.output  = nlp.generate()
+    message.output  = nlp.generate(prompt=message.input)
     return {"output" : message.output}
 
 @app.post("/chat_dialo/")
