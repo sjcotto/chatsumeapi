@@ -14,10 +14,24 @@ update = "*"
 gunicorn = "*"
 uvicorn = "*"
 fastapi = "*"
+<<<<<<< HEAD
 chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
+=======
+>>>>>>> production_deployment
 pydantic = "*"
 transformers = "*"
 torch = "*"
+adaptnlp = "*"
 
 [requires]
+<<<<<<< HEAD
 python_version = "3.7"
+=======
+python_version = "3.7"
+
+[packages.chatterbot]
+git = "git://github.com/qweliant/ChatterBot.git"
+
+[packages.chatterbot-corpus]
+git = "https://github.com/gunthercox/chatterbot-corpus.git"
+>>>>>>> production_deployment
