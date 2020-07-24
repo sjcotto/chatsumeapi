@@ -1,11 +1,4 @@
 # Docker
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1 (7703cb2f-e82b-437a-b9c0-9b7a77e1d21a)'
-    appType: 'webApp'
-    WebAppName: 'api'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 # Build a Docker image 
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
@@ -33,4 +26,4 @@ stages:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
-          $(tag)
+          $(tag) 
