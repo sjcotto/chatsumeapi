@@ -1,9 +1,9 @@
-# from chatterbot import ChatBot
-# from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 
-# bot = ChatBot("Chatsume")
+bot = ChatBot("Chatsume")
 
-# # First, lets train our bot with some data
-# trainer = ChatterBotCorpusTrainer(bot)
+# First, lets train our bot with some data
+trainer = ChatterBotCorpusTrainer(bot)
 
-# trainer.train('chatterbot.corpus.english')
+trainer.train('chatterbot.corpus.english')
