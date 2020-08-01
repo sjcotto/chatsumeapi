@@ -14,10 +14,13 @@ update = "*"
 gunicorn = "*"
 uvicorn = "*"
 fastapi = "*"
-chatterbot = {git = "git://github.com/qweliant/ChatterBot.git"}
 pydantic = "*"
 transformers = "*"
 torch = "*"
+chatterbot-corpus = "*"
 
 [requires]
 python_version = "3.7"
+
+[packages.chatterbot]
+git = "git://github.com/qweliant/ChatterBot.git"
