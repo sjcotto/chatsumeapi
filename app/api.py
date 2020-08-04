@@ -40,17 +40,17 @@ async def sentiment_analysis(message: Message):
 
 @app.post("/ner/")
 async def  named_entity_recognition(message: Message):
-    # if not message.input:
-    #     return
-    # print("NER", nlp.ner(message.input))
-    return {"output" : "nlp.ner(message.input)"}
+    if not message.input:
+        return
+    print("NER", nlp.ner(message.input))
+    return {"output" : nlp.ner(message.input)}
 
 @app.post("/generative/")
 async def  generate(message: Message):
-    # message.output  = nlp.generate(prompt=message.input)
-    return {"output" : "message.output"}
+    message.output  = nlp.generate(prompt=message.input)
+    return {"output" : message.output}
 
 @app.post("/chat_dialo/")
 async def  chat_dialo(message: Message):
-    # message.output  = nlp.chat_bot(message.input)
-    return {"output" : "message.output"}
+    message.output  = nlp.chat_bot(message.input)
+    return {"output" : message.output}

@@ -1,9 +1,9 @@
-# from transformers import (
-#     # pipeline,
-#     # AutoModelForCausalLM,
-#     # AutoTokenizer,
-#     # AutoModelForTokenClassification
-# )
+from transformers import (
+    pipeline,
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    AutoModelForTokenClassification
+)
 import torch
 import re
 
