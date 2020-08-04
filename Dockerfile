@@ -1,11 +1,8 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
-ENV PORT 8080
-ENV APP_MODULE app.api:app
-ENV LOG_LEVEL debug
-ENV WEB_CONCURRENCY 2
+FROM python:3.7
 
 COPY ./requirements/requirements.txt ./requirements/requirements.txt
 RUN pip3 install -r requirements/requirements.txt
 RUN python3 -m spacy download en_core_web_sm
 
 COPY ./app /app/app 
+CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "15400"]
