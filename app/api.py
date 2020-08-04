@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from train import bot
+from app.train import bot
 from pydantic import BaseModel
-from nlp import NLP
+from app.nlp import NLP
 
 class Message(BaseModel):
     input: str
