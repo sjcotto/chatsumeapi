@@ -1,15 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.train import bot
+from train import bot
 from pydantic import BaseModel
-# from app.nlp import NLP
+from nlp import NLP
 
 class Message(BaseModel):
     input: str
     output: str = None
 
 app = FastAPI()
-# nlp = NLP()
+nlp = NLP()
 
 origins = [
     "https://www.metavisuo.com/nlp",
@@ -35,8 +35,8 @@ async def chat_chatterbot(message: Message):
 
 @app.post("/sentiment/")
 async def sentiment_analysis(message: Message):
-    # message.output  = str(nlp.sentiments(message.input))
-    return {"output" :" message.output"}
+    message.output  = str(nlp.sentiments(message.input))
+    return {"output" : message.output}
 
 @app.post("/ner/")
 async def  named_entity_recognition(message: Message):
