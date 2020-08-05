@@ -15,8 +15,8 @@ gunicorn = "*"
 uvicorn = "*"
 fastapi = "*"
 pydantic = "*"
-torch = "*"
 transformers = "*"
+torch = "*"
 
 [requires]
 python_version = "3.7"

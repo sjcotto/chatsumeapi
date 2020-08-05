@@ -1,6 +1,6 @@
 from transformers import (
     pipeline,
-    AutoModelForCausalLM,
+    AutoModelWithLMHead,
     AutoTokenizer,
     AutoModelForTokenClassification
 )
