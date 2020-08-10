@@ -1,6 +1,6 @@
 from transformers import (
     pipeline,
-    AutoModelWithLMHead,
+    AutoModelForCausalLM,
     AutoTokenizer,
     AutoModelForTokenClassification
 )
@@ -10,10 +10,10 @@ import re
 
 class NLP:
     def __init__(self):
-        self.gen_model = AutoModelWithLMHead.from_pretrained('gpt2')
+        self.gen_model = AutoModelForCausalLM.from_pretrained('gpt2')
         self.gen_tokenizer = AutoTokenizer.from_pretrained('gpt2')  # Add specific options if needed
         self.chat_tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
-        self.chat_model = AutoModelWithLMHead.from_pretrained("microsoft/DialoGPT-medium")
+        self.chat_model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
         self.ner_model = AutoModelForTokenClassification.from_pretrained("dbmdz/bert-large-cased-finetuned-conll03-english")
         self.ner_tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
     
