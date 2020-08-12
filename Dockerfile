@@ -4,5 +4,5 @@ COPY ./requirements/requirements.txt ./requirements/requirements.txt
 RUN pip3 install -r requirements/requirements.txt
 RUN python3 -m spacy download en_core_web_sm
 
-COPY ./app /app/app 
-CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "15400"]
+COPY ./app /app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "15400"]
