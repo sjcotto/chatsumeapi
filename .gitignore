@@ -3,4 +3,4 @@
 .direnv
 *.sqlite3
 .json
-.bin
+*.bin

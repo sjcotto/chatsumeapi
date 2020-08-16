@@ -1,9 +1,7 @@
 from transformers import (
     pipeline,
-    GPT2LMHeadModel,
-    GPT2Tokenizer,
-    AutoTokenizer, 
     AutoModelForCausalLM,
+    AutoTokenizer,
     AutoModelForTokenClassification
 )
 import torch
@@ -12,21 +10,18 @@ import re
 
 class NLP:
     def __init__(self):
-        self.gen_model = GPT2LMHeadModel.from_pretrained('./app/models/transformers/gen_model')
-        self.gen_tokenizer = GPT2Tokenizer.from_pretrained('./app/models/transformers/gen_tokenizer') 
-         
-        # Add specific options if needed
-        self.chat_model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
-        self.chat_tokenizer =  AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
-        
-        self.ner_model = AutoModelForTokenClassification.from_pretrained("dbmdz/bert-large-cased-finetuned-conll03-english")
-        self.ner_tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+        self.gen_model = AutoModelForCausalLM.from_pretrained('model/transformers/gen_model')
+        self.gen_tokenizer = AutoTokenizer.from_pretrained('model/transformers/gen_tokenizer')  # Add specific options if needed
+        self.chat_tokenizer = AutoTokenizer.from_pretrained("model/transformers/chat_tokenizer")
+        self.chat_model = AutoModelForCausalLM.from_pretrained("model/transformers/chat_model")
+        self.ner_model = AutoModelForTokenClassification.from_pretrained("model/transformers/ner_model")
+        self.ner_tokenizer = AutoTokenizer.from_pretrained("model/transformers/ner_tokenizer")
     
     def generate(self, PADDING_TEXT="...", prompt="The epistemelogical limit"):
         
         inputs = self.gen_tokenizer.encode(PADDING_TEXT + prompt, add_special_tokens=False, return_tensors="pt")
         prompt_length = len(self.gen_tokenizer.decode(inputs[0], skip_special_tokens=True, clean_up_tokenization_spaces=True))
-        outputs = self.gen_model.generate(inputs, max_length=200, do_sample=True, top_p=0.95, top_k=60)
+        outputs = self.gen_model .generate(inputs, max_length=200, do_sample=True, top_p=0.95, top_k=60)
         generated = prompt + self.gen_tokenizer.decode(outputs[0])[prompt_length:]
         return str("generated")
 

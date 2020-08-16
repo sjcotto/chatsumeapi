@@ -4,9 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-jupyterlab = "*"
-ipywidgets = "*"
-pylint = "*"
 
 [packages]
 requests = "*"
@@ -19,6 +16,8 @@ tensorflow = "*"
 transformers = "*"
 torch = "*"
 torchvision = "*"
+jupyterlab = "*"
+ipywidgets = "*"
 
 [requires]
 python_version = "3.7"
