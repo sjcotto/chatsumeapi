@@ -7,4 +7,9 @@ RUN python3 -m spacy download en_core_web_sm
 COPY ./app /app
 RUN useradd -m myuser
 USER myuser
+
+
+
+
+
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "15400"]

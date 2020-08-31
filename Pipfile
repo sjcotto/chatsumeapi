@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-requests = "*"
 update = "*"
 gunicorn = "*"
 uvicorn = "*"
@@ -15,7 +14,6 @@ pydantic = "*"
 tensorflow = "*"
 transformers = "*"
 torch = "*"
-torchvision = "*"
 jupyterlab = "*"
 ipywidgets = "*"
 
