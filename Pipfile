@@ -6,22 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-update = "*"
 gunicorn = "*"
 uvicorn = "*"
 fastapi = "*"
 pydantic = "*"
-tensorflow = "*"
 transformers = "*"
-torch = "*"
 jupyterlab = "*"
 ipywidgets = "*"
 
 [requires]
 python_version = "3.7"
-
-[packages.chatterbot]
-git = "git://github.com/qweliant/ChatterBot.git"
-
-[packages.chatterbot-corpus]
-git = "https://github.com/gunthercox/chatterbot-corpus.git"
