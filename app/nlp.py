@@ -21,3 +21,5 @@ class NLP:
         nlp = pipeline("sentiment-analysis")
         result = nlp(text)[0]
         return f"label: {result['label']}, with score: {round(result['score'], 4)}"
+
+
