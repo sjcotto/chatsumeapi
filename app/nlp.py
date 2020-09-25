@@ -23,3 +23,4 @@ class NLP:
         return f"label: {result['label']}, with score: {round(result['score'], 4)}"
 
 
+
