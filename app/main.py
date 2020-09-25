@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from app.train import bot
 from pydantic import BaseModel
 from app.nlp import NLP
 
@@ -27,11 +26,6 @@ app.add_middleware(
     allow_methods=["POST","GET"],
     allow_headers=["*"],
 )
-
-# @app.post("/chat/")
-# async def chat_chatterbot(message: Message):
-#     message.output  = str(bot.get_response(message.input))
-#     return {"output" : message.output}
 
 @app.post("/generative/")
 async def  generate(message: Message):
