@@ -6,8 +6,8 @@ from transformers import (
 
 class NLP:
     def __init__(self):
-        self.gen_model = GPT2LMHeadModel.from_pretrained('./app/models/transformers/gen_model')
-        self.gen_tokenizer = GPT2Tokenizer.from_pretrained('./app/models/transformers/gen_tokenizer') 
+        self.gen_model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.gen_tokenizer = GPT2Tokenizer.from_pretrained('gpt2') 
          
     def generate(self, prompt="The epistemelogical limit"):
         
