@@ -41,3 +41,8 @@ async def sentiment_analysis(message: Message):
 async def summarization_analysis(message: Message):
     message.output  = str(nlp.summarization(message.input))
     return {"output" : message.output} 
+
+@app.post("/qa/")
+async def qarization(message: Message):
+    message.output  = str(nlp.qarization(message.input))
+    return {"output" : message.output}     
