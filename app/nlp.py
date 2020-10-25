@@ -29,10 +29,12 @@ class NLP:
         return summary_text
 
     def qarization(self, text: str):
-        nlp = pipeline("question-answering",model="distilbert-base-uncased-distilled-squad",
-                                  tokenizer="distilbert-base-uncased",
-                                  device=-1)
-        return nlp(question="test finding", context="My name is Carla and I live in Berlin")
+        question_answerer = pipeline('question-answering')
+        summary_text = question_answerer({
+        'question': 'What is the name of the repository ?',
+        'context': 'Pipeline have been included in the huggingface/transformers repository'
+        })
+        return summary_text
 
 
 
