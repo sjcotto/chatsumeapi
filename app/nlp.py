@@ -28,11 +28,11 @@ class NLP:
         summary_text = summarization(text)[0]['summary_text']
         return summary_text
 
-    def qarization(self, text: str):
+    def qarization(self, question: str, context: str ):
         question_answerer = pipeline('question-answering')
         summary_text = question_answerer({
-        'question': 'What is the name of the repository ?',
-        'context': 'Pipeline have been included in the huggingface/transformers repository'
+        'question': question,
+        'context': context
         })
         return summary_text
 

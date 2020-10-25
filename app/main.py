@@ -7,6 +7,11 @@ class Message(BaseModel):
     input: str
     output: str = None
 
+class QA(BaseModel):
+    question: str
+    context: str = None
+    output: str = None
+
 app = FastAPI()
 nlp = NLP()
 
@@ -43,6 +48,6 @@ async def summarization_analysis(message: Message):
     return {"output" : message.output} 
 
 @app.post("/qa/")
-async def qarization(message: Message):
-    message.output  = str(nlp.qarization(message.input))
+async def qarization(message: QA):
+    message.output  = str(nlp.qarization(message.question, message.context))
     return {"output" : message.output}     
