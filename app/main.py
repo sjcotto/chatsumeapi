@@ -47,7 +47,6 @@ async def summarization_analysis(message: Message):
     message.output  = str(nlp.summarization(message.input))
     return {"output" : message.output} 
 
-@app.post("/qa/")
+@app.post("/question-answering/")
 async def qarization(message: QA):
-    message.output  = str(nlp.qarization(message.question, message.context))
-    return {"output" : message.output}     
+    return nlp.qarization(message.question, message.context)
