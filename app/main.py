@@ -36,3 +36,8 @@ async def  generate(message: Message):
 async def sentiment_analysis(message: Message):
     message.output  = str(nlp.sentiments(message.input))
     return {"output" : message.output}
+
+@app.post("/summarization/")
+async def summarization_analysis(message: Message):
+    message.output  = str(nlp.summarization(message.input))
+    return {"output" : message.output} 

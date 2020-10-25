@@ -21,6 +21,10 @@ class NLP:
         nlp = pipeline("sentiment-analysis")
         result = nlp(text)[0]
         return f"label: {result['label']}, with score: {round(result['score'], 4)}"
-
+        
+    def summarization(self, text: str):
+        summarization = pipeline("summarization")
+        summary_text = summarization(text)[0]['summary_text']
+        return summary_text
 
 
