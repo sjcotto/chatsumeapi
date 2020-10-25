@@ -29,15 +29,10 @@ class NLP:
         return summary_text
 
     def qarization(self, text: str):
-        MODEL_LOC = "distilbert-base-uncased-distilled-squad"
-        TOKENIZER_LOC = "distilbert-base-uncased-distilled-squad"
-        qa = pipeline(
-            "question-answering",
-            model=MODEL_LOC,
-            tokenizer=TOKENIZER_LOC
-        )
-        context = " ".join(["The incubation period is around 5 days (range: 4-7 days) with a maximum of 12-13 day"]*10)
-        result_text = qa({"question": "incubation period?", "context": context})
-        return result_text
+        nlp = pipeline("question-answering",model="distilbert-base-uncased-distilled-squad",
+                                  tokenizer="distilbert-base-uncased",
+                                  device=-1)
+        return nlp(question="test finding", context="My name is Carla and I live in Berlin")
+
 
 
